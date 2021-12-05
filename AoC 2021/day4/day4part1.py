@@ -3,7 +3,7 @@ def helper(board):
         return list(map(int, row.split()))
     return list(map(helper2, board.split("\n")))
 
-data = open("day4.in").read()
+data = open("day4/a.in").read()
 nums, data = data.split("\n\n", 1)
 nums = list(map(int, nums.split(",")))
 boards = list(map(helper, data.split("\n\n")))

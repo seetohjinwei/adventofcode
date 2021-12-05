@@ -1,4 +1,4 @@
-with open("day4.in") as f:
+with open("day4/a.in") as f:
     nums, data =  f.read().split("\n\n", 1)
 nums = list(map(int, nums.split(",")))
 boards = list(map(lambda board: list(map(lambda row: list(map(int, row.split())), board.split("\n"))), data.split("\n\n")))
