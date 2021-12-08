@@ -36,7 +36,6 @@ public class day7 {
             for (int i = 0; i < N; i++) {
                 currentFuel += triangleNumber(Math.abs(crabs[i] - n));
             }
-
             if (currentFuel < lowestFuel) {
                 lowestFuel = currentFuel;
             }
