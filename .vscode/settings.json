@@ -1,0 +1,16 @@
+{
+    "files.associations": {
+        "functional": "cpp",
+        "algorithm": "cpp",
+        "ostream": "cpp",
+        "tuple": "cpp",
+        "vector": "cpp",
+        "utility": "cpp",
+        "unordered_set": "cpp",
+        "numeric": "cpp",
+        "string": "cpp",
+        "iostream": "cpp",
+        "iosfwd": "cpp",
+        "unordered_map": "cpp"
+    }
+}

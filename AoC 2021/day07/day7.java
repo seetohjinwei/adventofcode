@@ -28,7 +28,6 @@ public class day7 {
     }
 
     private static int part2(int[] crabs) {
-        int result = 0;
         int N = crabs.length;
         int lowestFuel = Integer.MAX_VALUE;
         for (int n = 0; n < crabs[N - 1]; n++) {
@@ -57,4 +56,3 @@ public class day7 {
         return;
     }
 }
-
