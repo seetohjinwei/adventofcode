@@ -1,4 +1,4 @@
-data = open("day3/a.in").read().split("\n")
+data = open("day03/a.in").read().split("\n")
 
 def part1():
     size = len(data[0])

@@ -1,4 +1,4 @@
-file = File.open('a.in')
+file = File.open('day09/a.in')
 data = file.read.chomp
 file.close
 

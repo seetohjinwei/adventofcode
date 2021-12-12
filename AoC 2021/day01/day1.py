@@ -1,6 +1,6 @@
 # part 2
 
-data = list(map(int, open("day1/a.in").read().split()))
+data = list(map(int, open("day01/a.in").read().split()))
 prev_window = data[0] + data[1] + data[2]
 
 result = 0

@@ -2,7 +2,7 @@ def helper(x):
     a, b = x.split()
     return (a, int(b))
 
-data = list(map(helper, open("day2/a.in").read().split("\n")))
+data = list(map(helper, open("day02/a.in").read().split("\n")))
 
 def part1():
     horizontal = 0
