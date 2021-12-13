@@ -12,5 +12,6 @@
         "iostream": "cpp",
         "iosfwd": "cpp",
         "unordered_map": "cpp"
-    }
+    },
+    "python.formatting.provider": "black"
 }
