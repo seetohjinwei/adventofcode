@@ -1,8 +1,9 @@
+from dataclasses import dataclass
 from math import floor
 import numpy as np
 import re
 
-with open("AoC 2021/day22/a.in") as f:
+with open("AoC 2021/day22/s.in") as f:
     data = f.read()
 
 def part1(data):
@@ -23,23 +24,58 @@ def part1(data):
 
 print("Part 1:", part1(data))
 
+@dataclass
+class Cube:
+    x1: int
+    x2: int
+    y1: int
+    y2: int
+    z1: int
+    z2: int
+
+def intersection(cube1: Cube, cube2: Cube):
+    has_intersection = False
+    cube_i = Cube(cube1.x1, cube1.x2, cube1.y1, cube1.y2, cube1.z1, cube1.z2)
+    if cube2.x1 >= cube1.x1 and cube2.x1 <= cube1.x2:
+        has_intersection = True
+        cube_i.x1 = cube2.x1
+    elif cube2.x2 >= cube1.x1 and cube2.x2 <= cube1.x2:
+        has_intersection = True
+        cube_i.x2 = cube2.x2
+    elif cube2.y1 >= cube1.y1 and cube2.y1 <= cube1.y2:
+        has_intersection = True
+        cube_i.y1 = cube2.y1
+    elif cube2.y2 >= cube1.y1 and cube2.y2 <= cube1.y2:
+        has_intersection = True
+        cube_i.y2 = cube2.y2
+    elif cube2.z1 >= cube1.z1 and cube2.z1 <= cube1.z2:
+        has_intersection = True
+        cube_i.z1 = cube2.z1
+    elif cube2.z2 >= cube1.z1 and cube2.z2 <= cube1.z2:
+        has_intersection = True
+        cube_i.z2 = cube2.z2
+    return (has_intersection, cube_i)
+
 def part2(data):
-    min_x = float("inf")
-    max_x = -float("inf")
-    min_y = float("inf")
-    max_y = -float("inf")
-    min_z = float("inf")
-    max_z = -float("inf")
-    digits = re.findall(r'x=(-?\d+)\.\.(-?\d+),y=(-?\d+)\.\.(-?\d+),z=(-?\d+)\.\.(-?\d+)', data)
-    for line in digits:
-        x1, x2, y1, y2, z1, z2 = map(int, line)
-        min_x = min(x1, min_x)
-        max_x = max(x2, max_x)
-        min_y = min(y1, min_y)
-        max_y = max(y2, max_y)
-        min_z = min(z1, min_z)
-        max_z = max(z2, max_z)
-    cubes = np.zeros([max_x - min_x + 1, max_y - min_y + 1, max_z - min_z + 1], dtype=bool)
-    # I just need to get 6.35 PiB of RAM to get this thing to work
+    cubes = []
+    data = re.findall(r'(on|off) x=(-?\d+)\.\.(-?\d+),y=(-?\d+)\.\.(-?\d+),z=(-?\d+)\.\.(-?\d+)', data)
+    for instruction, x1, x2, y1, y2, z1, z2 in data:
+        cube2 = Cube(x1, x2, y1, y2, z1, z2)
+        for cube1 in cubes:
+            has_intersection, cube_i = intersection(cube1, cube2)
+            if has_intersection:
+                if instruction == "on":
+                    pass
+                else:
+                    cubes.remove(cube1)
+                    cubes.append(Cube(cube1.x1, cube1.x2, cube1.y1, cube1.y2, cube1.z1, cube_i.z1))
+                    cubes.append(Cube(cube1.x1, cube1.x2, cube1.y1, cube_i.y1, cube1.z1, cube_i.z1))
+                    cubes.append(Cube(cube1.x1, cube_i.x1, cube1.y1, cube_i.y1, cube1.z1, cube_i.z1))
+                    pass
+                break
+        else:
+            if instruction == "on":
+                cubes.append(cube2)
+    print(len(cubes))
 
 print("Part 2:", part2(data))
