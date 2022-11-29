@@ -1,4 +1,7 @@
-bin/
+*
+!*.*
+!/**/
+!makefile
 .DS_Store
 *.class
 *.swp
