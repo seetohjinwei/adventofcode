@@ -1,11 +1,15 @@
 #!/bin/sh
 
-# generates dayXX.cpp from template.cpp
-# adds dayXX.cpp build recipe into makefile
+# Use with
+# 1. `./copy.sh 1`
+# 2. `./copy.sh 14`
+# 3. `./copy.sh ..`
+# Generates dayXX.cpp from template.cpp
+# Adds dayXX.cpp build recipe into makefile
 
 single_digit="^[0-9]$"
 valid_day="^([01][0-9]|2[0-5])$"
-dependencies=" parser.o"
+dependencies=" parser.o" # Update dependencies here as required
 
 if [ "$#" -lt "1" ]; then
   echo "Day is missing. Use '$0 xx' to generate dayxx."
