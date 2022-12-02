@@ -12,3 +12,11 @@ clean:
 reset: clean
 	cp makefile_template makefile
 	rm day*.cpp || true
+
+d01: d01-build
+	bin/day01
+d01-build: day01.o  parser.o
+	cd bin; \
+	$(CC) -o day01 day01.o  parser.o
+day01.o: day01.cpp
+	$(CC) -c -o bin/day01.o day01.cpp
