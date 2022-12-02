@@ -20,3 +20,11 @@ d01-build: day01.o  parser.o
 	$(CC) -o day01 day01.o  parser.o
 day01.o: day01.cpp
 	$(CC) -c -o bin/day01.o day01.cpp
+
+d02: d02-build
+	bin/day02
+d02-build: day02.o  parser.o
+	cd bin; \
+	$(CC) -o day02 day02.o  parser.o
+day02.o: day02.cpp
+	$(CC) -c -o bin/day02.o day02.cpp
