@@ -44,3 +44,11 @@ d04-build: day04.o  parser.o
 	$(CC) -o day04 day04.o  parser.o
 day04.o: day04.cpp
 	$(CC) -c -o bin/day04.o day04.cpp
+
+d05: d05-build
+	bin/day05
+d05-build: day05.o  parser.o
+	cd bin; \
+	$(CC) -o day05 day05.o  parser.o
+day05.o: day05.cpp
+	$(CC) -c -o bin/day05.o day05.cpp
